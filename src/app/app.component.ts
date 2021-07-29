@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'minapp';
+  produits = Produits;
+}
+export enum Produits {
+  Computer = 'Computer',
+  Tv = 'Tv',
+  Phone = 'Phone'
 }

@@ -1,0 +1,71 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by name"
+          [(ngModel)]="name"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchName()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Command List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let user of users; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveUser(user, i)"
+        >
+          {{ user.name }}
+        </li>
+      </ul>
+  
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllUsers()">
+        Remove All
+      </button>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentUser.id">
+        <h4>Command</h4>
+        <div>
+          <label><strong>Name:</strong></label> {{ currentUser.name }}
+        </div>
+        <div>
+          <label><strong><Address></Address>Address:</strong></label>
+          {{ currentUser.address }}
+        </div>
+        <div>
+            <label><strong><Address></Address>Phone:</strong></label>
+            {{ currentUser.phone }}
+          </div>
+          <div>
+            <label><strong><Address></Address>Product:</strong></label>
+            {{ currentUser.produit }}
+          </div>
+        <div>
+          <label><strong>Status:</strong></label>
+          {{ currentUser.published ? "Published" : "Pending" }}
+        </div>
+  
+        <a class="badge badge-warning" routerLink="/users/{{ currentUser.id }}">
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentUser">
+        <br />
+        <p>Please click on a User...</p>
+      </div>
+    </div>
+  </div>
